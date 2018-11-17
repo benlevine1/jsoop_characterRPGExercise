@@ -27,7 +27,7 @@ class Character{
 	generateStat( statName, valueDice){
 		var total = 0;
 		for (var i = 0; i < valueDice.count; i++){
-			var roll = Math.floor(Math.random() * 6) + 1;
+			var roll = Math.floor(Math.random() * valueDice.dice) + 1;
 			total += roll;
 		}
         this.stats[statName] = total;
@@ -44,6 +44,7 @@ class Character{
 		return message;
 	}
 	attack( target ){
-		
+		var message = this.name + this.weapon.generateAttackMessage() + this.weapon.name + ' at ' + target.name +  ' with a ' + this.weapon.attackSound + '! ' + this.name + ' does ' + this.weapon.use() + ' to ' + target.name;
+		return message;
 	}
 }
